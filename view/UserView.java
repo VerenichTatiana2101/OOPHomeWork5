@@ -3,79 +3,73 @@ import java.util.Scanner;
 
 public class UserView {
     Controller controller = new Controller();
-    Scanner input = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
+    int inCommand;
 
-    public void addUser() {
-        System.out.println("Select the type of user to add:\n"
-                + "1 - add a teacher\n"
-                + "2 - add a student\n"
-                + "3 - search a student\n"
-                + "4 - search a teacher\n");
-        int userChoise;
-        try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Enter a number 1 or 4.");
-            while (!input.hasNextInt()) {
-                System.out.println("Error! Please, enter a number.");
-                input.next();
+    public void userChoice() {
+        while (true) {
+            System.out.println("Select the type of user to add:\n"
+                    + "1 - add a teacher\n"
+                    + "2 - add a student\n"
+                    + "3 - exit");
+            inCommand = scan.nextInt();
+            scan.nextLine();
+            switch (inCommand) {
+                case 1:
+                    addTeacher();
+                    break;
+                case 2:
+                    addStudent();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Error! Please, enter a number 1 to 3.");
+                    break;
             }
-            userChoise = input.nextInt();
-        }
-        switch (userChoise) {
-            case 1:
-                addTeacher();
-                break;
-            case 2:
-                addStudent();
-                break;
-            case 3:
-                controller.showStuden();
-                break;
-            case 4:
-                controller.showTeacher();
-                break;
-            default:
-                System.out.println("Error! Please, enter a number 1 to 4.");
         }
     }
 
     public void addTeacher() {
         System.out.print("Input a name: ");
-        String name = input.nextLine();
+        String name = scan.nextLine();
         System.out.print("Input a last name: ");
-        String lastName = input.nextLine();
+        String lastName = scan.nextLine();
         System.out.print("Input a birthday in the format: YEAR/MONTH/DATE: ");
-        String[] tempDate = input.nextLine().split("/");
+        String temp = scan.nextLine();
+        String[] tempDate = temp.split("/");
         int year = Integer.parseInt(tempDate[0]);
         int month = Integer.parseInt(tempDate[1]);
         int date = Integer.parseInt(tempDate[2]);
-        GregorianCalendar birthday = new GregorianCalendar(year, month, date);
-        System.out.println("Disciplines: ");
-        String disciplines = input.nextLine();
-        System.out.println("Department: ");
-        String department = input.nextLine();
-        System.out.println("Rating: ");
-        Double rating = input.nextDouble();
-        controller.createNewTeacher(name, lastName, birthday, disciplines, department, rating);
+        GregorianCalendar birthDay = new GregorianCalendar(year, month, date);
+        System.out.print("Input a discipline: ");
+        String disciplines = scan.next();
+        System.out.print("Input a department: ");
+        String department = scan.next();
+        System.out.print("Rating: ");
+        Double rating = scan.nextDouble();
+        System.out.println(controller.createNewTeacher(name, lastName, birthDay, disciplines, department, rating));
     }
 
     public void addStudent() {
-        System.out.println("Input a name: ");
-        String name = input.nextLine();
-        System.out.println("Input a last name: ");
-        String lastName = input.nextLine();
-        System.out.println("Input a birthday in the format: YEAR/MONTH/DATE: ");
-        String[] tempDate = input.nextLine().split("/");
+        System.out.print("Input a name: ");
+        String name = scan.nextLine();
+        System.out.print("Input a last name: ");
+        String lastName = scan.nextLine();
+        System.out.print("Input a birthday in the format: YEAR/MONTH/DATE: ");
+        String temp = scan.nextLine();
+        String[] tempDate = temp.split("/");
         int year = Integer.parseInt(tempDate[0]);
         int month = Integer.parseInt(tempDate[1]);
         int date = Integer.parseInt(tempDate[2]);
-        GregorianCalendar birthday = new GregorianCalendar(year, month, date);
-        System.out.println("Group: ");
-        int group = input.nextInt();
-        System.out.println("Speciality: ");
-        String speciality = input.next();
-        System.out.println("Mean Ball: ");
-        Double meanBall = input.nextDouble();
-        controller.createNewStudent(name, lastName, birthday, group, speciality, meanBall);
+        GregorianCalendar birthDay = new GregorianCalendar(year, month, date);
+        System.out.print("Group:");
+        int group = scan.nextInt();
+        System.out.print("Speciality:");
+        String speciality = scan.next();
+        System.out.print("Average student score: ");
+        Double meanBall = scan.nextDouble();
+        System.out.println(controller.createNewStudent(name, lastName, birthDay, group, speciality, meanBall));
     }
-
 }

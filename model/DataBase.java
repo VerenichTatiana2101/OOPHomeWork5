@@ -5,30 +5,30 @@ public class DataBase<T extends User> {
 
   private List<Student> listStudents = new ArrayList<>();
 
-  public void initStudents(List<Student> listStudents) {
-    listStudents = listStudents;
+  public void initStudents(List<Student> students) {
+    this.listStudents = students;
   }
 
   private List<Teacher> listTeachers = new ArrayList<>();
 
-  public void initTeachers(List<Teacher> listTeacher) {
-    listTeacher = listTeacher;
+  public void initTeachers(List<Teacher> teachers) {
+    this.listTeachers = teachers;
   }
 
   public List<Student> getListStudents() {
     return listStudents;
   }
 
-  public void setListStudents(List<Student> listStudents) {
-    this.listStudents = listStudents;
+  public void setListStudents(List<Student> students) {
+    this.listStudents = students;
   }
 
   public List<Teacher> getListTeachers() {
     return listTeachers;
   }
 
-  public void setListTeachers(List<Teacher> listTeachers) {
-    this.listTeachers = listTeachers;
+  public void setListTeachers(List<Teacher> teachers) {
+    this.listTeachers = teachers;
   }
 
   @Override

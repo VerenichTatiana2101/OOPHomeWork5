@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public class Teacher extends User {
-    private static int id = 1;
+    private int id = 1;
     private String disciplines;
     private double rating;
     private String department;

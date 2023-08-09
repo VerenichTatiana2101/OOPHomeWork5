@@ -1,5 +1,5 @@
 public class Program {
     public static void main(String[] args) {
-        new UserView().addUser();
+        new UserView().userChoice();
     }
 }

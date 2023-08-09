@@ -1,7 +1,7 @@
 import java.util.Calendar;
 
 public class Student extends User {
-    private static int id = 1;
+    private int id = 1;
     private int numgroup;
     private String speciality;
     private double averageRating;
@@ -15,8 +15,12 @@ public class Student extends User {
         this.averageRating = averageRating;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNumgroup() {
@@ -53,6 +57,10 @@ public class Student extends User {
                 " Speciality - " + speciality +
                 " Average rating: " + averageRating;
     }
+
+
+
+
 
 
 

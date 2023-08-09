@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.Calendar;
 
-public class UserService<T extends User>  implements DataService<T> {
-  ArrayList<User> base = new ArrayList<>();
+public class UserService  implements DataService {
 
   @Override
   public Student createStudent(String name, String lastName, Calendar birthDay, int group, String speciality,
@@ -16,20 +14,6 @@ public class UserService<T extends User>  implements DataService<T> {
       String department, double rating) {
     Teacher teacher = new Teacher(name, lastName, birthDay, disciplines, rating, department);
     return teacher;
-  }
-
-  public void getTeachers() {
-    for (User user : base) {
-      if (user instanceof Teacher)
-        System.out.print(user);
-    }
-  }
-
-  public void getStudents() {
-    for (User user : base) {
-      if (user instanceof Student)
-        System.out.print(user);
-    }
   }
 
 }
