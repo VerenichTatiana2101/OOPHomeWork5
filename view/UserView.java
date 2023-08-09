@@ -24,63 +24,57 @@ public class UserView {
     }
 
     public void addUser(int userChoise) {
-        Scanner input = new Scanner(System.in);
-        String name;
-        String lastName;
-        int id;
-        String birthDay;
-        String temp;
-        String[] tempDate;
-        int group;
-        String speciality;
-        Double meanBall;
-        String disciplines;
-        String department;
-        Double rating;
         switch (userChoise) {
             case 1:
-                System.out.println("Input a name: ");
-                name = input.nextLine();
-                System.out.println("Input a last name: ");
-                lastName = input.nextLine();
-                System.out.println("Input id: ");
-                id = input.nextInt();
-                System.out.println("Input a birthday in the format: YEAR/MONTH/DATE: ");
-                tempDate = input.nextLine().split("/");
-                int year = Integer.parseInt(tempDate[0]);
-                int month = Integer.parseInt(tempDate[1]);
-                int date = Integer.parseInt(tempDate[2]);
-                GregorianCalendar birthday = new GregorianCalendar(year, month, date);
-                System.out.println("Group: ");
-                group = input.nextInt();
-                System.out.println("Speciality: ");
-                speciality = input.next();
-                System.out.println("Mean Ball: ");
-                meanBall = input.nextDouble();
-                new Controller().createNewStudent(name, lastName, birthDay, group,
-                speciality, meanBall);
+                addStudent();
                 break;
             case 2:
-                System.out.println("Имя: ");
-                name = input.next();
-                System.out.println("Фамилия: ");
-                lastName = input.next();
-                System.out.println("День рождения в формате: yyyy/mm/dd: ");
-                tempDate = input.next().split("/");
-                year = Integer.parseInt(tempDate[0]);
-                month = Integer.parseInt(tempDate[1]);
-                date = Integer.parseInt(tempDate[2]);
-                birthday = new GregorianCalendar(year, month, date);
-                System.out.println("Дисциплина: ");
-                disciplines = input.next();
-                System.out.println("Кафедра: ");
-                department = input.next();
-                System.out.println("Рейтинг: ");
-                rating = input.nextDouble();
-                new Controller().createNewTeacher(name, lastName, birthDay, disciplines, department, rating);
+                addTeacher();
                 break;
             default:
                 System.out.println("Error! Please, enter a number 1 or 2.");
         }
+    }
+
+    public void addTeacher() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Input a name: ");
+        String name = input.nextLine();
+        System.out.println("Input a last name: ");
+        String lastName = input.nextLine();
+        System.out.println("Input a birthday in the format: YEAR/MONTH/DATE: ");
+        String[] tempDate = input.nextLine().split("/");
+        int year = Integer.parseInt(tempDate[0]);
+        int month = Integer.parseInt(tempDate[1]);
+        int date = Integer.parseInt(tempDate[2]);
+        GregorianCalendar birthday = new GregorianCalendar(year, month, date);
+        System.out.println("Disciplines: ");
+        String disciplines = input.next();
+        System.out.println("Department: ");
+        String department = input.next();
+        System.out.println("Rating: ");
+        Double rating = input.nextDouble();
+        controller.createNewTeacher(name, lastName, birthday, disciplines, department, rating);
+    }
+
+    public void addStudent() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Input a name: ");
+        String name = input.nextLine();
+        System.out.println("Input a last name: ");
+        String lastName = input.nextLine();
+        System.out.println("Input a birthday in the format: YEAR/MONTH/DATE: ");
+        String[] tempDate = input.nextLine().split("/");
+        int year = Integer.parseInt(tempDate[0]);
+        int month = Integer.parseInt(tempDate[1]);
+        int date = Integer.parseInt(tempDate[2]);
+        GregorianCalendar birthday = new GregorianCalendar(year, month, date);
+        System.out.println("Group: ");
+        int group = input.nextInt();
+        System.out.println("Speciality: ");
+        String speciality = input.next();
+        System.out.println("Mean Ball: ");
+        Double meanBall = input.nextDouble();
+        controller.createNewStudent(name, lastName, birthday, group, speciality, meanBall);
     }
 }

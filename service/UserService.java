@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class UserService<T extends User> implements DataService<T>{
+public class UserService implements DataService{
 
     @Override
     public Student createStudent(String name, String lastName, Calendar birthDay, int group, String speciality,
@@ -18,10 +18,12 @@ public class UserService<T extends User> implements DataService<T>{
     }
 
     @Override
-    public ArrayList<T> readData() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readData'");
+    public ArrayList readData() {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Unimplemented method 'readData'");
     }
+
+
 
 
 

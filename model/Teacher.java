@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.Calendar;
 
 public class Teacher extends User {
@@ -7,7 +7,8 @@ public class Teacher extends User {
     private double rating;
     private String department;
 
-    public Teacher(String name, String lastName, Calendar birhDay, String disciplines, double rating, String department) {
+    public Teacher(String name, String lastName, Calendar birhDay,
+            String disciplines, double rating, String department) {
         super(name, lastName, birhDay);
         this.id = id++;
         this.disciplines = disciplines;
@@ -53,15 +54,6 @@ public class Teacher extends User {
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-
-
-
 
 
 
