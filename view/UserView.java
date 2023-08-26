@@ -64,9 +64,9 @@ public class UserView {
         int month = Integer.parseInt(tempDate[1]);
         int date = Integer.parseInt(tempDate[2]);
         GregorianCalendar birthDay = new GregorianCalendar(year, month, date);
-        System.out.print("Group:");
+        System.out.print("Group: ");
         int group = scan.nextInt();
-        System.out.print("Speciality:");
+        System.out.print("Speciality: ");
         String speciality = scan.next();
         System.out.print("Average student score: ");
         Double meanBall = scan.nextDouble();
